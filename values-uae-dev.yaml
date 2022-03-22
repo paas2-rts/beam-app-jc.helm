@@ -7,7 +7,7 @@ global:
     additionalCommand:
     command: >-
       cp $FLINK_HOME/conf/flink-conf.yaml.tpl $FLINK_HOME/conf/flink-conf.yaml &&
-      $FLINK_HOME/bin/standalone-job.sh start-foreground --job-classname org.example.kafkaoffset.MultipleKafkaOperatorsApp --parallelism=3 --runner=FlinkRunner --checkpointingInterval=10000;
+      $FLINK_HOME/bin/standalone-job.sh start-foreground --job-classname org.example.kafkaoffset.MultipleKafkaOperatorsApp --parallelism=3 --runner=FlinkRunner --checkpointingInterval=10000 kafkaBrokers=kafka-cp-kafka-headless:9092;
 
   taskmanager:
     replicaCount: 1
