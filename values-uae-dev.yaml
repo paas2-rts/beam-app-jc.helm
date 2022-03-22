@@ -1,0 +1,14 @@
+global:
+  image:
+    repository: gimral/beam-app
+    tag: '1.0.0'
+
+  jobmanager:
+    additionalCommand:
+    command: >-
+      cp $FLINK_HOME/conf/flink-conf.yaml.tpl $FLINK_HOME/conf/flink-conf.yaml &&
+      $FLINK_HOME/bin/standalone-job.sh start-foreground org.example.kafkaoffset.MultipleKafkaOperatorsApp --parallelism=3 --runner=FlinkRunner --checkpointingInterval=10000;
+
+  taskmanager:
+    replicaCount: 1
+    additionalCommand:
